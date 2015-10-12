@@ -1,5 +1,18 @@
 #!/bin/bash
 
+echo -n "YO DAWG!! are you logged in as w205? 'cause you need to be' [y/n]: "
+read answer
+
+
+
+if [[ "$answer" == "n" ]]; then
+	echo "login as w205 - we're depending on you"
+	return 1
+fi
+
+
+
+
 cd /data/w205
 mkdir hospitals
 chmod -R 777 hospitals
