@@ -14,7 +14,7 @@ Hospital_Ownership STRING,
 Emergency_Services STRING
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
-WITHSERDEPROPERTIES (
+WITH SERDEPROPERTIES (
 	"separatorChar" = ",",
 	"quoteChar"		= '"',
 	"escapeChar"	= '\\'
@@ -43,7 +43,7 @@ Measure_Start_Date STRING,
 Measure_End_Date STRING
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
-WITHSERDEPROPERTIES (
+WITH SERDEPROPERTIES (
 	"separatorChar" = ",",
 	"quoteChar"		= '"',
 	"escapeChar"	= '\\'
@@ -74,7 +74,7 @@ Measure_Start_Date STRING,
 Measure_End_Date STRING
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
-WITHSERDEPROPERTIES (
+WITH SERDEPROPERTIES (
 	"separatorChar" = ",",
 	"quoteChar"		= '"',
 	"escapeChar"	= '\\'
@@ -120,7 +120,7 @@ HCAHPS_Base_Score STRING,
 HCAHPS_Consistency_Score STRING
 )
 ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
-WITHSERDEPROPERTIES (
+WITH SERDEPROPERTIES (
 	"separatorChar" = ",",
 	"quoteChar"		= '"',
 	"escapeChar"	= '\\'
