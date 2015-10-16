@@ -35,6 +35,7 @@ tail -n +2 raw_data/'Hospital General Information.csv' > hospitals.csv
 tail -n +2 raw_data/'Timely and Effective Care - Hospital.csv' > effective_care.csv
 tail -n +2 raw_data/'Readmissions and Deaths - Hospital.csv' > readmissions.csv
 tail -n +2 raw_data/'hvbp_hcahps_05_28_2015.csv' > survey_responses.csv
+tail -n +2 raw_data/'hvbp_tps_05_28_2015.csv' > total_perf_scores.csv
 
 echo 'files renamed'
 ls -al
@@ -56,6 +57,9 @@ hdfs dfs -put readmissions.csv /user/w205/hospital_compare/readmissions
 
 hdfs dfs -mkdir /user/w205/hospital_compare/survey_responses
 hdfs dfs -put survey_responses.csv /user/w205/hospital_compare/survey_responses
+
+hdfs dfs -mkdir /user/w205/hospital_compare/total_perf_scores
+hdfs dfs -put total_perf_scores.csv /user/w205/hospital_compare/total_perf_scores
 
 echo "hadoop dirs made"
 return 1
