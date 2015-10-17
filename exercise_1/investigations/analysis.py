@@ -1,9 +1,9 @@
 from pyspark.sql.functions import UserDefinedFunction
 from pyspark.sql.types import *
 from pyspark.sql import functions as F
-from pyspark import SparkContext, HiveContext
-sc = SparkContext()
-sqlContext = HiveContext(sc)
+#from pyspark import SparkContext, HiveContext
+#sc = SparkContext()
+#sqlContext = HiveContext(sc)
 
 ####################################################################################################################################
 # Data and shenanigans
