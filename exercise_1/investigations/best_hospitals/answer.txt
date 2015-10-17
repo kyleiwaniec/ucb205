@@ -1,19 +1,19 @@
 Top ten hospitals using naive normalization avg_score = score/maxScore:
 
-+---------------+---------------+-----------+--------------------+-----+
-|provider_number|       aveScore|provider_id|       hospital_name|state|
-+---------------+---------------+-----------+--------------------+-----+
-|         390322|92.857142857143|     390322|Rothman Orthopaed...|   PA|
-|         260227|           92.8|     260227|BLACK RIVER COMMU...|   MO|
-|         450834| 90.47619047619|     450834|PHYSICIANS CENTRE...|   TX|
-|         150177|           90.2|     150177|UNITY MEDICAL AND...|   IN|
-|         420102|89.142857142857|     420102|GHS PATEWOOD MEMO...|   SC|
-|         390327|88.190476190476|     390327|WELLSPAN SURGERY ...|   PA|
-|         500148|87.190476190476|     500148|CONFLUENCE HEALTH...|   WA|
-|         030120|           86.8|     030120|    GILBERT HOSPITAL|   AZ|
-|         430090|86.428571428571|     430090|SIOUX FALLS SPECI...|   SD|
-|         520194|85.714285714286|     520194|ORTHOPAEDIC HOSPI...|   WI|
-+---------------+---------------+-----------+--------------------+-----+
++-----------+------------------+-----------+--------------------+-----+
+|provider_id|         avg_score|provider_id|       hospital_name|state|
++-----------+------------------+-----------+--------------------+-----+
+|     371322|0.6466876971608833|     371322|BEAVER COUNTY MEM...|   OK|
+|     131305|0.6348580441640378|     131305|STEELE MEMORIAL M...|   ID|
+|     271334|0.6340694006309149|     271334|LIBERTY MEDICAL C...|   MT|
+|     111332|0.6072555205047319|     111332|BROOKS COUNTY HOS...|   GA|
+|     461308|0.6064668769716088|     461308|   SAN JUAN HOSPITAL|   UT|
+|     161358|0.5753154574132492|     161358|WAYNE COUNTY HOSP...|   IA|
+|     361324|0.5709779179810726|     361324|MEDCENTRAL HEALTH...|   OH|
+|     351319|0.5665615141955835|     351319|PEMBINA COUNTY ME...|   ND|
+|     171382|0.5654574132492112|     171382|   ATCHISON HOSPITAL|   KS|
+|     431333|0.5646687697160883|     431333|SANFORD CANTON-IN...|   SD|
++-----------+------------------+-----------+--------------------+-----+
 
 Top ten states using naive normalization avg_score = score/maxScore:
 +-----+-------------------+
@@ -100,6 +100,6 @@ JOIN INNER
 +---------------+---------------+---------------+--------------------+-----+------------+
 
 
-correlation aveScore w/ survey_score: 0.66692552077290945
+correlation aveScore w/ survey_score: -0.20348103642463941
 
 
