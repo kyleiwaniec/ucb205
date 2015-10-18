@@ -40,7 +40,7 @@ STORED AS PARQUET
 AS
 select measure_id, measure_name, CAST(score AS DOUBLE) AS national_rate
 from effective_care_national
-where national_rate RLIKE '^[0-9]+(\.[0-9]*)$';
+where score RLIKE '^[0-9]+(\.[0-9]*)$';
 
 
 DROP TABLE readmissions_clean;
