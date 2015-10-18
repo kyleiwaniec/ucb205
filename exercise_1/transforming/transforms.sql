@@ -1,10 +1,38 @@
-DROP TABLE effective_clean;
-CREATE TABLE effective_clean
+DROP TABLE effective_clean_pos;
+CREATE TABLE effective_clean_pos
 STORED AS PARQUET
 AS
 select measure_id, measure_name, provider_id, state, CAST(score AS DOUBLE) AS score
 from effective_care
-where score RLIKE '^[0-9]+(\.[0-9]*)$';
+where score RLIKE '^[0-9]+(\.[0-9]*)$'
+and measure_id != 'ED_1b'
+and measure_id != 'ED_2b'
+and measure_id != 'OP_1'
+and measure_id != 'OP_18b'
+and measure_id != 'OP_20'
+and measure_id != 'OP_21'
+and measure_id != 'OP_3b'
+and measure_id != 'OP_5'
+and measure_id != 'VTE_6';
+
+DROP TABLE effective_clean_neg;
+CREATE TABLE effective_clean_neg
+STORED AS PARQUET
+AS
+select measure_id, measure_name, provider_id, state, CAST(score AS DOUBLE) AS score
+from effective_care
+where score RLIKE '^[0-9]+(\.[0-9]*)$'
+and (measure_id = 'ED_1b'
+or measure_id = 'ED_2b'
+or measure_id = 'OP_1'
+or measure_id = 'OP_18b'
+or measure_id = 'OP_20'
+or measure_id = 'OP_21'
+or measure_id = 'OP_3b'
+or measure_id = 'OP_5'
+or measure_id = 'VTE_6'
+);
+
 
 DROP TABLE effective_clean_national;
 CREATE TABLE effective_clean_national

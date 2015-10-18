@@ -26,13 +26,15 @@ readmissions_national_w_std = readmissions_national.join(readmissions_stddev, re
 readmissions_national_w_std.registerTempTable('readmissions_national_w_std_tbl')
 
 # scores get flipped becuase bigger is worse.
-readmissions_normalized = sqlContext.sql("SELECT *, (-(rc.score-r.national_rate)/r.stddev) as zscore FROM readmissions_clean rc LEFT JOIN readmissions_national_w_std_tbl r ON r.measure_id = rc.measure_id GROUP BY r.measure_id, rc.measure_id,r.measure_name, rc.measure_name, rc.provider_id, rc.state, rc.score, r.national_rate, r.stddev  ORDER BY zscore DESC")
+readmissions_normalized = sqlContext.sql("SELECT *, (-(rc.score-r.national_rate)/r.stddev) as zscore FROM readmissions_clean rc INNER JOIN readmissions_national_w_std_tbl r ON r.measure_id = rc.measure_id GROUP BY r.measure_id, rc.measure_id,r.measure_name, rc.measure_name, rc.provider_id, rc.state, rc.score, r.national_rate, r.stddev  ORDER BY zscore DESC")
 
-effective_national_w_std = effective_national.join(effective_stddev, effective_national.measure_id == effective_stddev.measure_id, "inner").select(effective_national.measure_id, effective_national.measure_name, effective_national.national_rate, effective_stddev.stddev)
-readmissions_national_w_std.registerTempTable('readmissions_national_w_std_tbl')
+effective_national_w_std = effective_national.join(effective_stddev, effective_national.measure_id == effective_stddev.measure_id, "inner").select(effective_national.measure_id, effective_national.measure_name, effective_national.national_score, effective_stddev.stddev)
+effective_national_w_std.registerTempTable('effective_national_w_std_tbl')
 
-readmissions_normalized = sqlContext.sql("SELECT *, (rc.score-r.national_rate)/r.stddev as zscore FROM readmissions_clean rc LEFT JOIN readmissions_national_w_std_tbl r ON r.measure_id = rc.measure_id GROUP BY r.measure_id, rc.measure_id,r.measure_name, rc.measure_name, rc.provider_id, rc.state, rc.score, r.national_rate, r.stddev  ORDER BY zscore DESC")
-
+effective_normalized = sqlContext.sql("SELECT rc.measure_id, r.measure_name, rc.provider_id, rc.state, rc.score, r.national_score, r.stddev, (rc.score-r.national_score)/r.stddev as zscore FROM effective_clean rc INNER JOIN effective_national_w_std_tbl r ON r.measure_id = rc.measure_id GROUP BY rc.measure_id, r.measure_name, rc.provider_id, rc.state, rc.score, r.national_score, r.stddev  ORDER BY zscore DESC")
+effective_normalized.registerTempTable('effective_normalized_tbl')
+#.select(first("measure_id"), "measure_name","provider_id","state","score","measure_name","national_score","stddev","zscore")
+effective_normalized_sigened = sqlContext.sql("SELECT *, -zscore FROM effective_normalized_tbl WHERE measure_id = 'ED_1b'")
 
 #normalized_ec 
 #normalized_rc 
