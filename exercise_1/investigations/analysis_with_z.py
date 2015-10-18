@@ -11,7 +11,7 @@ from pyspark.sql import functions as F
 effective = sqlContext.sql("SELECT * FROM  effective_clean")
 effective_national = sqlContext.sql("SELECT * FROM  effective_clean_national")
 readmissions = sqlContext.sql("SELECT * FROM  readmissions_clean")
-readmissions_national = sqlContext.sql("SELECT * FROM  readmissions_national")
+readmissions_national = sqlContext.sql("SELECT * FROM  readmissions_clean_national")
 hospitals = sqlContext.sql("SELECT * FROM hospitals_clean")
 surveys = sqlContext.sql("SELECT * FROM survey_responses_clean")
 

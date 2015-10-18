@@ -11,7 +11,7 @@ CREATE TABLE effective_clean_national
 STORED AS PARQUET
 AS
 select measure_id, measure_name, provider_id, state, CAST(score AS DOUBLE) AS score
-from effective_care
+from effective_care_national
 where score RLIKE '^[0-9]+(\.[0-9]*)$';
 
 
@@ -28,7 +28,7 @@ CREATE TABLE readmissions_clean_national
 STORED AS PARQUET
 AS
 select measure_id, measure_name, provider_id, state, CAST(national_rate AS DOUBLE) AS score
-from readmissions
+from readmissions_national
 where score RLIKE '^[0-9]+(\.[0-9]*)$';
 
 
