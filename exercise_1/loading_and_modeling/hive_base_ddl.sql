@@ -181,32 +181,5 @@ WITH SERDEPROPERTIES (
 STORED as TEXTFILE
 LOCATION '/user/w205/hospital_compare/survey_responses';
 
-DROP TABLE total_perf_scores;
-CREATE EXTERNAL TABLE IF NOT EXISTS total_perf_scores
-(
-Provider_Number STRING,
-Hospital_Name STRING,
-Address STRING,
-City STRING,
-State STRING,
-Zip_Code STRING,
-County_Name STRING,
-Unweighted_Normalized_Clinical_Process_of_Care_Domain_Score STRING,
-Weighted_Clinical_Process_of_Care_Domain_Score STRING,
-Unweighted_Patient_Experience_of_Care_Domain_Score STRING,
-Weighted_Patient_Experience_of_Care_Domain_Score STRING,
-Unweighted_Normalized_Outcome_Domain_Score STRING,
-Weighted_Outcome_Domain_Score STRING,
-Unweighted_Normalized_Efficiency_Domain_Score STRING,
-Weighted_Efficiency_Domain_Score STRING,
-Total_Performance_Score STRING
-)
-ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
-WITH SERDEPROPERTIES (
-	"separatorChar" = ",",
-	"quoteChar"		= '"',
-	"escapeChar"	= '\\'
-)
-STORED as TEXTFILE
-LOCATION '/user/w205/hospital_compare/total_perf_scores';
+
 
