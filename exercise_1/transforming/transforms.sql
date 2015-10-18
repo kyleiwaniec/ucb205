@@ -5,19 +5,19 @@ AS
 select measure_id, measure_name, provider_id, state, CAST(score AS DOUBLE) AS score
 from effective_care
 where score RLIKE '^[0-9]+(\.[0-9]*)$' 
-and provider_id != 'ED_1b'
-and provider_id != 'ED_2b'
-and provider_id != 'AMI_7a'
-and provider_id != 'OP_1'
-and provider_id != 'OP_18b'
-and provider_id != 'OP_2'
-and provider_id != 'OP_20'
-and provider_id != 'OP_21'
-and provider_id != 'OP_22'
-and provider_id != 'OP_23'
-and provider_id != 'OP_3b'
-and provider_id != 'OP_5'
-and provider_id != 'OP_6';
+and measure_id != 'ED_1b'
+and measure_id != 'ED_2b'
+and measure_id != 'AMI_7a'
+and measure_id != 'OP_1'
+and measure_id != 'OP_18b'
+and measure_id != 'OP_2'
+and measure_id != 'OP_20'
+and measure_id != 'OP_21'
+and measure_id != 'OP_22'
+and measure_id != 'OP_23'
+and measure_id != 'OP_3b'
+and measure_id != 'OP_5'
+and measure_id != 'OP_6';
 
 
 
