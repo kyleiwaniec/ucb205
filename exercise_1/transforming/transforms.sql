@@ -31,7 +31,7 @@ STORED AS PARQUET
 AS
 select measure_id, measure_name, CAST(national_rate AS DOUBLE) AS score
 from readmissions_national
-where score RLIKE '^[0-9]+(\.[0-9]*)$';
+where national_rate RLIKE '^[0-9]+(\.[0-9]*)$';
 
 
 
