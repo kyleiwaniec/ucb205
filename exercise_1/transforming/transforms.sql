@@ -10,7 +10,7 @@ DROP TABLE effective_clean_national;
 CREATE TABLE effective_clean_national
 STORED AS PARQUET
 AS
-select measure_id, measure_name, provider_id, state, CAST(score AS DOUBLE) AS score
+select measure_id, measure_name, CAST(score AS DOUBLE) AS national_score
 from effective_care_national
 where score RLIKE '^[0-9]+(\.[0-9]*)$';
 
