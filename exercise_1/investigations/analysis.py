@@ -21,7 +21,6 @@ rc_max = rc.agg(F.max("score").alias("max_score")).first()
 name = 'score'
 udf = UserDefinedFunction(lambda x: 1-(x/rc_max.max_score), StringType())
 normalized_rc = rc.select(*[udf(column).alias(name) if column == name else column for column in rc.columns])
-normalized_rc.show(10)
 
 union_procedures = normalized_ec.unionAll(normalized_rc)
 
@@ -48,14 +47,18 @@ union_procedures.registerTempTable('union_procedures_tbl')
 union_procedures_tbl_variance = sqlContext.sql("SELECT measure_name, measure_id, variance(score) AS variance FROM union_procedures_tbl GROUP BY measure_name, measure_id  ORDER BY variance DESC")
 union_procedures_tbl_variance.show(10)
 
+union_procedures_hospitals_variance = sqlContext.sql("SELECT provider_id, variance(score) AS variance FROM union_procedures_tbl GROUP BY provider_id  ORDER BY variance DESC")
+
+
 ####################################################################################################################################
 # Are average scores for hospital quality or procedural variability correlated with patient survey responses?
 ####################################################################################################################################
 
-joined_scores = joined_procedures.join(surveys, surveys.provider_number == union_procedures_avg.provider_id, "inner")
+joined_scores = union_procedures_avg.join(surveys, surveys.provider_number == union_procedures_avg.provider_id, "inner")
 joined_scores.stat.corr('avg_score', 'survey_score')
 
-
+joined_scores_proc = union_procedures_hospitals_variance.join(surveys, surveys.provider_number == union_procedures_hospitals_variance.provider_id, "inner")
+joined_scores_proc.stat.corr('variance', 'survey_score')
 
 
 

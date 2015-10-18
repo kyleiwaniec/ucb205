@@ -2,12 +2,15 @@ from pyspark import SparkContext, HiveContext
 sc = SparkContext()
 sqlContext = HiveContext(sc)
 
-ec = sqlContext.sql("SELECT * FROM  effective_clean")
+ec = sqlContext.sql("SELECT * FROM  effective_clean WHERE measure_id != 'ED_1b'")
 rc = sqlContext.sql("SELECT * FROM  readmissions_clean")
 hospitals = sqlContext.sql("SELECT * FROM hospitals_clean")
 tot = sqlContext.sql("SELECT * FROM total_perf_scores_clean")
 surveys = sqlContext.sql("SELECT * FROM survey_responses_clean")
 
+sco = sqlContext.sql("SELECT measure_id, MAX(score) AS avg_score FROM  effective_clean GROUP BY measure_id ORDER BY measure_id")
+
+# todo: filter effective clean
 
 
 ####################################################################################################################################
@@ -126,6 +129,6 @@ union_procedures_tbl_variance.show(10)
 joined_scores = hospitals_avg_scores.join(surveys, surveys.provider_number == hospitals_avg_scores.provider_number, "inner")
 joined_scores.stat.corr('aveScore', 'survey_score')
 
+ec.groupBy("measure_id").orderBy().show(10)
 
-
-
+#execfile('/data/w205/ucb205/exercise_1/investigations/analysis.py')

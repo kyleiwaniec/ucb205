@@ -4,7 +4,21 @@ STORED AS PARQUET
 AS
 select measure_id, measure_name, provider_id, state, CAST(score AS DOUBLE) AS score
 from effective_care
-where score RLIKE '^[0-9]+(\.[0-9]*)$';
+where score RLIKE '^[0-9]+(\.[0-9]*)$' 
+and provider_id != 'ED_1b'
+and provider_id != 'ED_2b'
+and provider_id != 'AMI_7a'
+and provider_id != 'OP_1'
+and provider_id != 'OP_18b'
+and provider_id != 'OP_2'
+and provider_id != 'OP_20'
+and provider_id != 'OP_21'
+and provider_id != 'OP_22'
+and provider_id != 'OP_23'
+and provider_id != 'OP_3b'
+and provider_id != 'OP_5'
+and provider_id != 'OP_6';
+
 
 
 DROP TABLE readmissions_clean;
@@ -37,7 +51,7 @@ DROP TABLE survey_responses_clean;
 CREATE TABLE survey_responses_clean
 STORED AS PARQUET
 AS
-select provider_number, hospital_name, state, CAST(hcahps_base_score + hcahps_consistency_score AS DOUBLE) AS survey_score
+select provider_number, hospital_name, state, CAST(hcahps_base_score/100 + hcahps_consistency_score/100 AS DOUBLE) AS survey_score
 from survey_responses
 where hcahps_base_score RLIKE '^[0-9]+(\.[0-9]*)$' 
 AND hcahps_consistency_score RLIKE '^[0-9]+(\.[0-9]*)$';

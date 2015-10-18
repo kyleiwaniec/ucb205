@@ -1,3 +1,5 @@
+execfile('/data/w205/ucb205/exercise_1/investigations/analysis.py')
+
 Top ten hospitals using naive normalization avg_score = score/maxScore:
 
 +-----------+------------------+-----------+--------------------+-----+
@@ -100,6 +102,6 @@ JOIN INNER
 +---------------+---------------+---------------+--------------------+-----+------------+
 
 
-correlation aveScore w/ survey_score: -0.20348103642463941
+correlation aveScore w/ survey_score: -0.20348103642463902
 
-
+correlation variance in procedure scores w/ survey_scores: -0.054664410936477711
