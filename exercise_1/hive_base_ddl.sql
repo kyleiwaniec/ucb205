@@ -22,9 +22,6 @@ WITH SERDEPROPERTIES (
 STORED as TEXTFILE
 LOCATION '/user/w205/hospital_compare/hospitals';
 
-
-
-
 DROP TABLE effective_care;
 CREATE EXTERNAL TABLE IF NOT EXISTS effective_care
 (
