@@ -22,6 +22,7 @@ WITH SERDEPROPERTIES (
 STORED as TEXTFILE
 LOCATION '/user/w205/hospital_compare/hospitals';
 
+
 DROP TABLE effective_care;
 CREATE EXTERNAL TABLE IF NOT EXISTS effective_care
 (
@@ -51,6 +52,7 @@ WITH SERDEPROPERTIES (
 STORED as TEXTFILE
 LOCATION '/user/w205/hospital_compare/effective_care';
 
+
 DROP TABLE effective_care_national;
 CREATE EXTERNAL TABLE IF NOT EXISTS effective_care_national
 (
@@ -71,8 +73,6 @@ WITH SERDEPROPERTIES (
 )
 STORED as TEXTFILE
 LOCATION '/user/w205/hospital_compare/effective_care_national';
-
-
 
 
 DROP TABLE readmissions;
@@ -129,9 +129,6 @@ WITH SERDEPROPERTIES (
 )
 STORED as TEXTFILE
 LOCATION '/user/w205/hospital_compare/readmissions_national';
-
-
-
 
 
 

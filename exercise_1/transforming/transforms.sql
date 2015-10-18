@@ -52,7 +52,6 @@ from readmissions
 where score RLIKE '^[0-9]+(\.[0-9]*)$';
 
 
-
 DROP TABLE readmissions_clean_national;
 CREATE TABLE readmissions_clean_national
 STORED AS PARQUET
@@ -62,8 +61,6 @@ from readmissions_national
 where national_rate RLIKE '^[0-9]+(\.[0-9]*)$';
 
 
-
-
 DROP TABLE hospitals_clean;
 CREATE TABLE hospitals_clean
 STORED AS PARQUET
@@ -71,7 +68,6 @@ AS
 select provider_id, hospital_name, state
 from hospitals
 where provider_id RLIKE '.+';
-
 
 
 DROP TABLE survey_responses_clean;
