@@ -17,6 +17,24 @@ Top ten hospitals using naive normalization avg_score = score/maxScore:
 |     431333|0.5646687697160883|     431333|SANFORD CANTON-IN...|   SD|
 +-----------+------------------+-----------+--------------------+-----+
 
+Top ten hospitals with mesures of time removed:
++-----------+------------------+-----------+--------------------+-----+
+|provider_id|         avg_score|provider_id|       hospital_name|state|
++-----------+------------------+-----------+--------------------+-----+
+|     161324|               1.0|     161324|GEORGE C GRAPE CO...|   IA|
+|     361327|               1.0|     361327|COMMUNITY HOSPITA...|   OH|
+|     241304|               1.0|     241304|SANFORD MEDICAL C...|   MN|
+|     491303|               1.0|     491303|DICKENSON COMMUNI...|   VA|
+|     210058|               1.0|     210058|UNIV OF MD REHABI...|   MD|
+|     490144|               1.0|     490144|NOVANT HEALTH HAY...|   VA|
+|     231300|               1.0|     231300|PAUL OLIVER MEMOR...|   MI|
+|     231338|0.9977777777777779|     231338|SPECTRUM HEALTH G...|   MI|
+|     501311|              0.99|     501311|EAST ADAMS RURAL ...|   WA|
+|     670045|              0.99|     670045|COOK CHILDRENS NO...|   TX|
++-----------+------------------+-----------+--------------------+-----+
+
+
+
 Top ten states using naive normalization avg_score = score/maxScore:
 +-----+-------------------+
 |state|          avg_score|
@@ -32,6 +50,22 @@ Top ten states using naive normalization avg_score = score/maxScore:
 |   NH|0.24159670243852888|
 |   KS|0.24059464594947272|
 +-----+-------------------+
+
+Top ten states with mesures of time removed:
++-----+------------------+
+|state|         avg_score|
++-----+------------------+
+|   UT|0.8459426929085438|
+|   DE|0.8425278100614307|
+|   MA|0.8365474704364164|
+|   CA|0.8364642843243412|
+|   CO|0.8363745107757833|
+|   VA|0.8361915384450371|
+|   SC| 0.835557015445914|
+|   HI|0.8353645972226746|
+|   NC|0.8351548309405086|
+|   CT|0.8346816834974489|
++-----+------------------+
 ________________________________________________________________________________________________________________________________________________
 
 highest varaibility is in ED_1b == Median Time from ED Arrival to ED Departure for Admitted ED Patients
@@ -51,57 +85,26 @@ highest varaibility is in ED_1b == Median Time from ED Arrival to ED Departure f
 |Pneumonia (PN) 30...|  READM_30_PN|0.001242892368525363|
 +--------------------+-------------+--------------------+
 
+.. but then again, if you remove the time measures.. Thrombolytic Therapy wins highest variance - yay Thrombolytic Therapy!
++--------------------+----------------+--------------------+
+|        measure_name|      measure_id|            variance|
++--------------------+----------------+--------------------+
+|Thrombolytic Therapy|           STK_4|0.030876266989619344|
+|Healthcare worker...|IMM_3_FAC_ADHPCT|0.026430369925948802|
+|Warfarin therapy ...|           VTE_5|0.023312110506656648|
+|Venous thromboemb...|           VTE_1|0.018024517779100115|
+|    Stroke Education|           STK_8|0.017490407126478914|
+|Home Management P...|           CAC_3|0.016177604166666675|
+|Percent of newbor...|           PC_01| 0.01586235245982939|
+|Immunization for ...|           IMM_2|0.012385237621200546|
+|Discharge instruc...|            HF_1|0.011420906199138011|
+|Discharged on Sta...|           STK_6| 0.01007476229704424|
++--------------------+----------------+--------------------+
+
+
 ________________________________________________________________________________________________________________________________________________
 
-hospitals_avg_scores
-+---------------+---------------+
-|provider_number|       aveScore|
-+---------------+---------------+
-|         390322|92.857142857143|
-|         260227|           92.8|
-|         450834| 90.47619047619|
-|         150177|           90.2|
-|         420102|89.142857142857|
-|         390327|88.190476190476|
-|         500148|87.190476190476|
-|         030120|           86.8|
-|         430090|86.428571428571|
-|         520194|85.714285714286|
-+---------------+---------------+
 
-surveys
-+---------------+--------------------+-----+------------+
-|provider_number|       hospital_name|state|survey_score|
-+---------------+--------------------+-----+------------+
-|         010001|SOUTHEAST ALABAMA...|   AL|        33.0|
-|         010005|MARSHALL MEDICAL ...|   AL|        71.0|
-|         010007|MIZELL MEMORIAL H...|   AL|        57.0|
-|         010008|CRENSHAW COMMUNIT...|   AL|        45.0|
-|         010011|   ST VINCENT'S EAST|   AL|        27.0|
-|         010012|DEKALB REGIONAL M...|   AL|        51.0|
-|         010016|SHELBY BAPTIST ME...|   AL|        25.0|
-|         010019|HELEN KELLER MEMO...|   AL|        44.0|
-|         010021| DALE MEDICAL CENTER|   AL|        53.0|
-|         010022|CHEROKEE MEDICAL ...|   AL|        75.0|
-+---------------+--------------------+-----+------------+
+correlation of aveScore w/ survey_score: 0.11803448499018189
 
-JOIN INNER
-+---------------+---------------+---------------+--------------------+-----+------------+
-|provider_number|       aveScore|provider_number|       hospital_name|state|survey_score|
-+---------------+---------------+---------------+--------------------+-----+------------+
-|         390322|92.857142857143|         390322|BUCKS COUNTY SPEC...|   PA|        90.0|
-|         260227|           92.8|         260227|BLACK RIVER COMMU...|   MO|        88.0|
-|         450834| 90.47619047619|         450834|PHYSICIANS CENTRE...|   TX|       100.0|
-|         150177|           90.2|         150177|UNITY MEDICAL AND...|   IN|        97.0|
-|         420102|89.142857142857|         420102|GHS PATEWOOD MEMO...|   SC|        98.0|
-|         390327|88.190476190476|         390327|WELLSPAN SURGERY ...|   PA|        98.0|
-|         500148|87.190476190476|         500148|CONFLUENCE HEALTH...|   WA|        89.0|
-|         030120|           86.8|         030120|    GILBERT HOSPITAL|   AZ|        78.0|
-|         430090|86.428571428571|         430090|SIOUX FALLS SPECI...|   SD|        95.0|
-|         520194|85.714285714286|         520194|ORTHOPAEDIC HOSPI...|   WI|       100.0|
-+---------------+---------------+---------------+--------------------+-----+------------+
-
-
-correlation aveScore w/ survey_score: -0.20348103642463902
-
-correlation variance in procedure scores w/ survey_scores: -0.054664410936477711
+correlation of variance in procedure scores w/ survey_scores: -0.29575187087911092
