@@ -60,7 +60,7 @@ Address STRING,
 City STRING,         
 State STRING,        
 ZIP_Code STRING,     
-County_Name STRING
+County_Name STRING,
 Phone_Number STRING, 
 Measure_Name STRING,
 Measure_ID STRING,   
