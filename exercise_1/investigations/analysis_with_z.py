@@ -3,6 +3,7 @@
 from pyspark.sql.functions import UserDefinedFunction
 from pyspark.sql.types import *
 from pyspark.sql import functions as F
+from pyspark.sql.window import Window
 
 ####################################################################################################################################
 # Data and shenanigans
@@ -15,18 +16,28 @@ readmissions_national = sqlContext.sql("SELECT * FROM  readmissions_clean_nation
 hospitals = sqlContext.sql("SELECT * FROM hospitals_clean")
 surveys = sqlContext.sql("SELECT * FROM survey_responses_clean")
 
+#readmissions.select("measure_id").distinct().count() # 14
+#readmissions_national.select("measure_id").distinct().count() #14
 
-ec_max = effective.agg(F.max("score").alias("max_score")).first()
-name = 'score'
-udf = UserDefinedFunction(lambda x: x/ec_max.max_score, StringType())
-normalized_ec = effective.select(*[udf(column).alias(name) if column == name else column for column in effective.columns])
+readmissions_stddev = sqlContext.sql("SELECT measure_id, stddev(score) AS stddev FROM readmissions_clean GROUP BY measure_id")
+effective_stddev = sqlContext.sql("SELECT measure_id, stddev(score) AS stddev FROM effective_clean GROUP BY measure_id")
 
-rc_max = readmissions.agg(F.max("score").alias("max_score")).first()
-name = 'score'
-udf = UserDefinedFunction(lambda x: 1-(x/rc_max.max_score), StringType())
-normalized_rc = readmissions.select(*[udf(column).alias(name) if column == name else column for column in readmissions.columns])
+readmissions_national_w_std = readmissions_national.join(readmissions_stddev, readmissions_national.measure_id == readmissions_stddev.measure_id, "inner").select(readmissions_national.measure_id, readmissions_national.measure_name, readmissions_national.national_rate, readmissions_stddev.stddev)
+readmissions_national_w_std.registerTempTable('readmissions_national_w_std_tbl')
 
-union_procedures = normalized_ec.unionAll(normalized_rc)
+# scores get flipped becuase bigger is worse.
+readmissions_normalized = sqlContext.sql("SELECT *, (-(rc.score-r.national_rate)/r.stddev) as zscore FROM readmissions_clean rc LEFT JOIN readmissions_national_w_std_tbl r ON r.measure_id = rc.measure_id GROUP BY r.measure_id, rc.measure_id,r.measure_name, rc.measure_name, rc.provider_id, rc.state, rc.score, r.national_rate, r.stddev  ORDER BY zscore DESC")
+
+effective_national_w_std = effective_national.join(effective_stddev, effective_national.measure_id == effective_stddev.measure_id, "inner").select(effective_national.measure_id, effective_national.measure_name, effective_national.national_rate, effective_stddev.stddev)
+readmissions_national_w_std.registerTempTable('readmissions_national_w_std_tbl')
+
+readmissions_normalized = sqlContext.sql("SELECT *, (rc.score-r.national_rate)/r.stddev as zscore FROM readmissions_clean rc LEFT JOIN readmissions_national_w_std_tbl r ON r.measure_id = rc.measure_id GROUP BY r.measure_id, rc.measure_id,r.measure_name, rc.measure_name, rc.provider_id, rc.state, rc.score, r.national_rate, r.stddev  ORDER BY zscore DESC")
+
+
+#normalized_ec 
+#normalized_rc 
+
+#union_procedures = normalized_ec.unionAll(normalized_rc)
 
 ####################################################################################################################################
 # What hospitals are models of high-quality care? What states are models of high-quality care?

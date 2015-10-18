@@ -29,7 +29,7 @@ DROP TABLE readmissions_clean_national;
 CREATE TABLE readmissions_clean_national
 STORED AS PARQUET
 AS
-select measure_id, measure_name, CAST(national_rate AS DOUBLE) AS score
+select measure_id, measure_name, CAST(national_rate AS DOUBLE) AS national_rate
 from readmissions_national
 where national_rate RLIKE '^[0-9]+(\.[0-9]*)$';
 
