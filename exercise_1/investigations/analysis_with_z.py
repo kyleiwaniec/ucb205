@@ -1,4 +1,4 @@
-#execfile('/data/w205/ucb205/exercise_1/investigations/analysis.py')
+#execfile('/data/w205/ucb205/exercise_1/investigations/analysis_with_z.py')
 
 from pyspark.sql.functions import UserDefinedFunction
 from pyspark.sql.types import *
@@ -19,12 +19,12 @@ surveys = sqlContext.sql("SELECT * FROM survey_responses_clean")
 ec_max = effective.agg(F.max("score").alias("max_score")).first()
 name = 'score'
 udf = UserDefinedFunction(lambda x: x/ec_max.max_score, StringType())
-normalized_ec = effective.select(*[udf(column).alias(name) if column == name else column for column in ec.columns])
+normalized_ec = effective.select(*[udf(column).alias(name) if column == name else column for column in effective.columns])
 
 rc_max = readmissions.agg(F.max("score").alias("max_score")).first()
 name = 'score'
 udf = UserDefinedFunction(lambda x: 1-(x/rc_max.max_score), StringType())
-normalized_rc = readmissions.select(*[udf(column).alias(name) if column == name else column for column in rc.columns])
+normalized_rc = readmissions.select(*[udf(column).alias(name) if column == name else column for column in readmissions.columns])
 
 union_procedures = normalized_ec.unionAll(normalized_rc)
 
