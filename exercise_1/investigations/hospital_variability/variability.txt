@@ -1,0 +1,32 @@
+Highest procedure varaibility is in IMM_3_FAC_ADHPCT == Healthcare Personnel Influenza Vaccination
++--------------------+------------------+------------------+
+|        measure_name|        measure_id|          variance|
++--------------------+------------------+------------------+
+|Healthcare worker...|  IMM_3_FAC_ADHPCT|1.0000000000000155|
+|Heart failure (HF...|        MORT_30_HF| 1.000000000000011|
+|Rate of readmissi...| READM_30_HIP_KNEE|1.0000000000000084|
+|Ischemic stroke p...|             STK_2| 1.000000000000008|
+|Heart failure pat...|              HF_3|1.0000000000000073|
+|Heart failure pat...|              HF_1|1.0000000000000073|
+|Pneumonia (PN) 30...|        MORT_30_PN|1.0000000000000056|
+|Patients with blo...|             VTE_5|1.0000000000000047|
+|Rate of readmissi...|READM_30_HOSP_WIDE|1.0000000000000044|
+|Ischemic stroke p...|             STK_3|1.0000000000000042|
++--------------------+------------------+------------------+
+
+
+Highest hospital variability as between procedures 370170 == USPHS LAWTON INDIAN HOSPITAL, OK
++-----------+------------------+
+|provider_id|          variance|
++-----------+------------------+
+|     370170|111.37141227937559|
+|     400006| 33.12249633734375|
+|     140177|28.719749195825035|
+|     450755|20.459098467004065|
+|     450144| 19.73209854335337|
+|     241373| 19.61334163939946|
+|     030071|19.323328883404752|
+|     141330|17.681384573065717|
+|     450235| 16.51068776777233|
+|     161302|16.118689536164208|
++-----------+------------------+
