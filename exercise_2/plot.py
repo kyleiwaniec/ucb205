@@ -1,40 +1,57 @@
 #!/usr/bin/env python
-# a bar plot with errorbars
+import psycopg2
+import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 
-N = 5
-menMeans = (20, 35, 30, 35, 27)
-menStd = (2, 3, 4, 1, 2)
+parser = argparse.ArgumentParser()
+parser.add_argument("-w", help="enter a word you want to find")
+args = parser.parse_args()
+
+conn = psycopg2.connect(database="tcount", user="postgres", password="pass", host="localhost", port="5432")
+cur = conn.cursor()
+
+cur.execute("SELECT word, count FROM Tweetwordcount ORDER BY count DESC LIMIT 20;")
+response = cur.fetchall()
+wordsList_x = []
+wordsList_y = []
+for i in response:
+	#print i[0]," : ",i[1]
+	wordsList_x.append(i[0])
+	wordsList_y.append(i[1])
+
+print response
+print wordsList_x
+
+conn.commit()
+
+conn.close()
+
+N = 20
+menMeans = (wordsList_y)
 
 ind = np.arange(N)  # the x locations for the groups
-width = 0.35       # the width of the bars
+width = 0.5       # the width of the bars
 
 fig, ax = plt.subplots()
-rects1 = ax.bar(ind, menMeans, width, color='r', yerr=menStd)
+rects1 = ax.bar(ind, menMeans, width, color='deeppink', edgecolor = "none")
 
-womenMeans = (25, 32, 34, 20, 25)
-womenStd = (3, 5, 2, 3, 3)
-rects2 = ax.bar(ind + width, womenMeans, width, color='y', yerr=womenStd)
-
-# add some text for labels, title and axes ticks
-ax.set_ylabel('Scores')
-ax.set_title('Scores by group and gender')
+ax.set_title('Top 20 words')
 ax.set_xticks(ind + width)
-ax.set_xticklabels(('G1', 'G2', 'G3', 'G4', 'G5'))
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.spines['bottom'].set_visible(False)
+ax.spines['left'].set_visible(False)
 
-ax.legend((rects1[0], rects2[0]), ('Men', 'Women'))
+ax.set_xticklabels((wordsList_x), rotation=45 )
+plt.tick_params(
+    axis='x',          # changes apply to the x-axis
+    which='both',      # both major and minor ticks are affected
+    bottom='off',      # ticks along the bottom edge are off
+    top='off',         # ticks along the top edge are off
+    left='off',
+    right='off')
 
-
-def autolabel(rects):
-    # attach some text labels
-    for rect in rects:
-        height = rect.get_height()
-        ax.text(rect.get_x() + rect.get_width()/2., 1.05*height,
-                '%d' % int(height),
-                ha='center', va='bottom')
-
-autolabel(rects1)
-autolabel(rects2)
 plt.savefig('plot.png')
 plt.show()
+
