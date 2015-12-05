@@ -11,16 +11,31 @@ args = parser.parse_args()
 conn = psycopg2.connect(database="tcount", user="postgres", password="pass", host="localhost", port="5432")
 cur = conn.cursor()
 
-cur.execute("SELECT word, count FROM Tweetwordcount ORDER BY count DESC LIMIT 20;")
+cur.execute("SELECT word, count FROM Tweetwordcount ORDER BY count DESC;")
 response = cur.fetchall()
-wordsList_x = []
-wordsList_y = []
-for i in response:
-	#print i[0]," : ",i[1]
-	wordsList_x.append(i[0])
-	wordsList_y.append(i[1])
 
-print response
+common_words = ["the", "be", "to", "of", "and", "a", "in", "that", "have", "I", "it", "for", "not", 
+"on", "with", "he", "as", "you", "do", "at", "this", "but", "his", "by", "from", "they", "we", "say", 
+"her", "she", "or", "an", "will", "my", "one", "all", "would", "there", "their", "what", "so", "up", 
+"out", "if", "about", "who", "get", "which", "go", "me", "when", "make", "can", "like", "time", "no", 
+"just", "him", "know", "take", "person", "into", "year", "your", "good", "some", "could", "them", 
+"see", "other", "than", "then", "now", "look", "only", "come", "its", "over", "think", "also", "back", 
+"after", "use", "two", "how", "our", "work", "first", "well", "way", "even", "new", "want", "because", 
+"any", "these", "give", "day", "most", "us"]
+
+tupleX = tuple(x for x in response if x[0] not in common_words)
+
+#tupleX = tuple(x for x in response if x[0] != 'the')
+tupleX = tupleX[1:21]
+
+
+wordsList_x = [x[0] for x in tupleX]
+wordsList_y = [y[1] for y in tupleX]
+# for i in tupleX:
+# 	wordsList_x.append(i[0])
+# 	wordsList_y.append(i[1])
+
+print tupleX
 print wordsList_x
 
 conn.commit()
