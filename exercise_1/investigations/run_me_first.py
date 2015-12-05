@@ -1,3 +1,5 @@
+#execfile('/data/w205/ucb205/exercise_1/investigations/run_me_first.py')
+
 from pyspark.sql.functions import UserDefinedFunction
 from pyspark.sql.types import *
 from pyspark.sql import functions as F
