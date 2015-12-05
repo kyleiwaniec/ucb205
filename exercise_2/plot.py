@@ -50,8 +50,7 @@ plt.tick_params(
     bottom='off',      # ticks along the bottom edge are off
     top='off',         # ticks along the top edge are off
     left='off',
-    right='off',
-    labelbottom='off')
+    right='off')
 
 plt.savefig('plot.png')
 plt.show()
