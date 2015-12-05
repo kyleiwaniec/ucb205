@@ -31,14 +31,17 @@ N = 20
 menMeans = (wordsList_y)
 
 ind = np.arange(N)  # the x locations for the groups
-width = 0.1       # the width of the bars
+width = 0.25       # the width of the bars
 
 fig, ax = plt.subplots()
-rects1 = ax.bar(ind, menMeans, width, color='r')
+rects1 = ax.bar(ind, menMeans, width, color='cadetblue')
 
 ax.set_title('Top 20 words')
 ax.set_xticks(ind + width)
-
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.spines['bottom'].set_visible(False)
+ax.spines['left'].set_visible(False)
 
 ax.set_xticklabels((wordsList_x))
 
