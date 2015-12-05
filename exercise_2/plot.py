@@ -1,13 +1,37 @@
 #!/usr/bin/env python
-# a bar plot with errorbars
+import psycopg2
+import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 
-N = 5
-menMeans = (20, 35, 30, 35, 27)
+parser = argparse.ArgumentParser()
+parser.add_argument("-w", help="enter a word you want to find")
+args = parser.parse_args()
+
+conn = psycopg2.connect(database="tcount", user="postgres", password="pass", host="localhost", port="5432")
+cur = conn.cursor()
+
+cur.execute("SELECT word, count FROM Tweetwordcount ORDER BY count DESC LIMIT 20;")
+response = cur.fetchall()
+wordsList_x = []
+wordsList_y = []
+for i in response:
+	#print i[0]," : ",i[1]
+	wordsList_x.append(i[0])
+	wordsList_y.append(i[1])
+
+print response
+print wordsList_x
+
+conn.commit()
+
+conn.close()
+
+N = 20
+menMeans = (wordsList_y)
 
 ind = np.arange(N)  # the x locations for the groups
-width = 0.35       # the width of the bars
+width = 0.1       # the width of the bars
 
 fig, ax = plt.subplots()
 rects1 = ax.bar(ind, menMeans, width, color='r')
@@ -16,7 +40,7 @@ ax.set_title('Top 20 words')
 ax.set_xticks(ind + width)
 
 
-ax.set_xticklabels(('G1', 'G2', 'G3', 'G4', 'G5'))
+ax.set_xticklabels((wordsList_x))
 
 
 plt.savefig('plot.png')
