@@ -4,21 +4,23 @@
 #Connecting to a database
 #Note: If the database does not exist, then this command will create the database
 
-
+import sys
 import psycopg2
 
-conn = psycopg2.connect(database="Tcount", user="postgres", password="pass", host="localhost", port="5432")
+conn = psycopg2.connect(database="tcount", user="postgres", password="pass", host="localhost", port="5432")
 
-#Create a Table
-#The first step is to create a cursor. 
+# Create a Table
+# The first step is to create a cursor. 
+# sudo -u postgres psql -f twitter.sql
 
+'''
 cur = conn.cursor()
-cur.execute('''CREATE TABLE Tweetwordcount
+cur.execute("""CREATE TABLE Tweetwordcount
        (word TEXT PRIMARY KEY     NOT NULL,
-       count INT     NOT NULL);''')
+       count INT     NOT NULL);""")
 conn.commit()
 conn.close()
-
+'''
 
 #Running sample SQL statements
 #Inserting/Selecting/Updating
@@ -29,14 +31,30 @@ conn.close()
 
 cur = conn.cursor()
 
-#Insert
+#Insert - throws duplicate key errors
+'''
 cur.execute("INSERT INTO Tweetwordcount (word,count) \
       VALUES ('test', 1)");
 conn.commit()
+'''
 
-#Update
+# Update if exists, else insert
 #Assuming you are passing the tuple (uWord, uCount) as an argument
-cur.execute("UPDATE Tweetwordcount SET count=%s WHERE word=%s", (uWord, uCount))
+
+print sys.argv
+
+uWord = sys.argv[1]
+uCount = sys.argv[2]
+
+print uWord
+print uCount
+
+cur.execute("UPDATE Tweetwordcount SET count=%s WHERE word=%s", (uCount, uWord))
+conn.commit()
+
+cur.execute("INSERT INTO Tweetwordcount (count, word) \
+       SELECT %s,%s \
+       WHERE NOT EXISTS (SELECT 1 FROM Tweetwordcount WHERE word=%s)", (uCount, uWord, uWord))
 conn.commit()
 
 #Select
