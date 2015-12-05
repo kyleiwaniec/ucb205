@@ -51,8 +51,8 @@ DROP TABLE IF EXISTS Tweetwordcount;
 CREATE TABLE Tweetwordcount (
     id integer DEFAULT nextval('id_seq'::regclass) NOT NULL,
     created_at timestamp without time zone DEFAULT now() NOT NULL,
-    word character varying(45) NOT NULL,
-    count integer NOT NULL,
+    word TEXT PRIMARY KEY NOT NULL,    
+    count integer NOT NULL
 );
 
 
