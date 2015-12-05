@@ -11,16 +11,20 @@ args = parser.parse_args()
 conn = psycopg2.connect(database="tcount", user="postgres", password="pass", host="localhost", port="5432")
 cur = conn.cursor()
 
-cur.execute("SELECT word, count FROM Tweetwordcount ORDER BY count DESC LIMIT 20;")
+cur.execute("SELECT word, count FROM Tweetwordcount ORDER BY count DESC;")
 response = cur.fetchall()
-wordsList_x = []
-wordsList_y = []
-for i in response:
-	#print i[0]," : ",i[1]
-	wordsList_x.append(i[0])
-	wordsList_y.append(i[1])
 
-print response
+tupleX = tuple(x for x in response if x[0] != 'the')
+tupleX = tupleX[1:21]
+
+
+wordsList_x = [x[0] for x in tupleX]
+wordsList_y = [y[1] for y in tupleX]
+# for i in tupleX:
+# 	wordsList_x.append(i[0])
+# 	wordsList_y.append(i[1])
+
+print tupleX
 print wordsList_x
 
 conn.commit()
