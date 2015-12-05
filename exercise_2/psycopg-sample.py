@@ -13,6 +13,7 @@ conn = psycopg2.connect(database="tcount", user="postgres", password="pass", hos
 # The first step is to create a cursor. 
 # sudo -u postgres psql -f twitter.sql
 
+
 '''
 cur = conn.cursor()
 cur.execute("""CREATE TABLE Tweetwordcount
@@ -45,6 +46,7 @@ print sys.argv
 
 uWord = sys.argv[1]
 uCount = sys.argv[2]
+
 
 print uWord
 print uCount
