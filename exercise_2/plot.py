@@ -43,8 +43,15 @@ ax.spines['right'].set_visible(False)
 ax.spines['bottom'].set_visible(False)
 ax.spines['left'].set_visible(False)
 
-ax.set_xticklabels((wordsList_x))
-
+ax.set_xticklabels((wordsList_x), rotation=45 )
+plt.tick_params(
+    axis='x',          # changes apply to the x-axis
+    which='both',      # both major and minor ticks are affected
+    bottom='off',      # ticks along the bottom edge are off
+    top='off',         # ticks along the top edge are off
+    left='off',
+    right='off',
+    labelbottom='off')
 
 plt.savefig('plot.png')
 plt.show()
