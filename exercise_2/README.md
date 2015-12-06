@@ -1,7 +1,7 @@
 #Exercise 2#
 
 
-###Requirements:
+##Requirements:
 
 ####AMI   
 The __ucbw205_complete_plus_postgres_virtual2.7__ AMI is recommended. It has the python 2.7 virtual environment already set up and running:      
@@ -15,7 +15,7 @@ But if you insist... you can use the AMI specified in the exercise. If you use t
 ####Volume   
 `m3.large`
 
-####Dependencies:   
+##Dependencies:   
 (These will be installed by following the Steps below)
 ```
 Postgres
