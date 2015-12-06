@@ -45,6 +45,7 @@ width = 0.5       # the width of the bars
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
+
 rects1 = ax.bar(ind, wordCounts, width, color='deeppink', edgecolor = "none")
 
 ax.set_title('Top 20 words')
