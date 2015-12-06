@@ -25,31 +25,24 @@ common_words = ["the", "be", "to", "of", "and", "a", "in", "that", "have", "I", 
 
 tupleX = tuple(x for x in response if x[0] not in common_words)
 
-#tupleX = tuple(x for x in response if x[0] != 'the')
 tupleX = tupleX[1:21]
-
 
 wordsList_x = [x[0] for x in tupleX]
 wordsList_y = [y[1] for y in tupleX]
-# for i in tupleX:
-# 	wordsList_x.append(i[0])
-# 	wordsList_y.append(i[1])
 
-print tupleX
-print wordsList_x
 
 conn.commit()
 
 conn.close()
 
 N = 20
-menMeans = (wordsList_y)
+wordCounts = (wordsList_y)
 
 ind = np.arange(N)  # the x locations for the groups
 width = 0.5       # the width of the bars
 
 fig, ax = plt.subplots()
-rects1 = ax.bar(ind, menMeans, width, color='deeppink', edgecolor = "none")
+rects1 = ax.bar(ind, wordCounts, width, color='deeppink', edgecolor = "none")
 
 ax.set_title('Top 20 words')
 ax.set_xticks(ind + width)
