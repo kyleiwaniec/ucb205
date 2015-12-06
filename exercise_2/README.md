@@ -3,7 +3,7 @@
 
 ###Requirements:###
 
-####AMI:   
+####AMI   
 The __ucbw205_complete_plus_postgres_virtual2.7__ AMI is recommended. It has the python 2.7 virtual environment already set up and running:      
 `ucbw205_complete_plus_postgres_virtual2.7`   
 `ami-003f7f6a`
@@ -18,9 +18,19 @@ But if you insist... you can use the AMI specified in the exercise. If you use t
 ```
 Postgres
 Python 2.7
+lein
+```
+####Python modules:
+```
+matplotlib
+streamparse
+psycopg2
+argparse
+numpy
+tweepy
 ```
 
-###Steps###
+###Steps to run application
 
 Once you have mounted /data on your volume:   
 ```
