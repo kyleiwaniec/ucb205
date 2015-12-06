@@ -40,7 +40,6 @@ cd /data
 git clone git@github.com:kyleiwaniec/ucb205.git
 cd ucb205/
 git checkout exercise_2
-cd exercise_2/
 ```
 
 Install dependencies. You will be prompted to choose which AMI you are using, and to confirm whether or not postgres is set up on /data:   
