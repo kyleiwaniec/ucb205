@@ -3,11 +3,13 @@
 
 ###Requirements:###
 
-####AMI:####   
-The xxx_virtual2.7 AMI is recommended. It has the python 2.7 virtual environment already set up and running:      
+####AMI:   
+The __ucbw205_complete_plus_postgres_virtual2.7__ AMI is recommended. It has the python 2.7 virtual environment already set up and running:      
 `ucbw205_complete_plus_postgres_virtual2.7`   
+`ami-003f7f6a`
+
    
-But if you insist... you can use the AMI specified in the exercise. If you use this AMI, python 2.7 will be configured exactly ass per the instructions in the exercise.     
+But if you insist... you can use the AMI specified in the exercise. If you use this AMI, python 2.7 will be configured exactly as per the instructions in the exercise.     
 `ucbw205_complete_plus_postgres_PY2.7`
 
 ####Volume   
