@@ -9,7 +9,7 @@ if [[ "$answer" != "1" ]]; then
 	chmod a+x /usr/local/bin/lein
 	sudo /usr/local/bin/lein
 
-	pip install matplotlib
+#	pip install matplotlib
 	pip install streamparse
 	pip install psycopg2
 	pip install argparse
