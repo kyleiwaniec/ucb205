@@ -63,7 +63,7 @@ python /data/ucb205/exercise_2/plot.py
 
 ```
 
-Use scp to view the generated plot.png bar graph:
+Use scp to view the generated plot.png bar graph:   
 `scp -i your_key.pem root@xx.xxx.xx.xx:/data/ucb205/exercise_2/plot.png /path/to/local/dir`
 
 
