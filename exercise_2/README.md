@@ -3,16 +3,16 @@
 
 ###Requirements:###
 
-AMI:
-The xxx_virtual2.7 AMI is recommended. It has the python 2.7 virtual environment already set up and running:   
+####AMI:####   
+The xxx_virtual2.7 AMI is recommended. It has the python 2.7 virtual environment already set up and running:      
 `ucbw205_complete_plus_postgres_virtual2.7`   
    
-But if you insist... you can use the AMI specified in the exercise. If you use this AMI, python 2.7 will be configured exactly ass per the instructions in the exercise.   
+But if you insist... you can use the AMI specified in the exercise. If you use this AMI, python 2.7 will be configured exactly ass per the instructions in the exercise.     
 `ucbw205_complete_plus_postgres_PY2.7`
 
-Volume
+####Volume   
 `m3.large`
-
+####Other
 ```
 Postgres
 Python 2.7
@@ -20,14 +20,14 @@ Python 2.7
 
 ###Steps###
 
-Once you have mounted /data on your volume:
-
+Once you have mounted /data on your volume:   
+```
 cd /data
 git clone git@github.com:kyleiwaniec/ucb205.git
 cd ucb205/
 git checkout exercise_2
 cd exercise_2/
-
+```
 
 Install dependencies. You will be prompted to choose your AMI and confirm whether or not postgres is set up on /data:   
 `. install-dependencies.sh`
