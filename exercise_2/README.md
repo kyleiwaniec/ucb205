@@ -1,10 +1,20 @@
 #Exercise 2#
 
 
-ex2 steps:
+Requirements:
 
-AMI
-ucbw205_complete_plus_postgres_PY2.7
+AMI:
+`ucbw205_complete_plus_postgres_PY2.7`
+
+Volume
+`m3.large`
+
+```
+Postgres
+Python 2.7
+```
+
+
 
 sudo yum install python27-devel –y
 mv /usr/bin/python /usr/bin/python266
