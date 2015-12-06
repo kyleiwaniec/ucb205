@@ -2,6 +2,8 @@
 import psycopg2
 import argparse
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 parser = argparse.ArgumentParser()
@@ -41,7 +43,8 @@ wordCounts = (wordsList_y)
 ind = np.arange(N)  # the x locations for the groups
 width = 0.5       # the width of the bars
 
-fig, ax = plt.subplots()
+fig = plt.figure()
+ax = fig.add_subplot(111)
 rects1 = ax.bar(ind, wordCounts, width, color='deeppink', edgecolor = "none")
 
 ax.set_title('Top 20 words')

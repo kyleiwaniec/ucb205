@@ -1,10 +1,11 @@
 
-STR=$'If you are using the ucbw205_complete_plus_postgres_virtual2.7 AMI (recommended), press 1. If yo are using the ucbw205_complete_plus_postgres_PY2.7
- AMI, press 2: '
+
+function AMI {
+STR=$'If you are using the ucbw205_complete_plus_postgres_virtual2.7 AMI (RECOMMENDED), enter 1. \nIf you are using the ucbw205_complete_plus_postgres_PY2.7 AMI, enter 2. '
 echo "$STR"
 read answer
 
-if [[ "$answer" != "1" ]]; then
+if [[ "$answer" == "1" ]]; then
 	wget --directory-prefix=/usr/local/bin/ https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 	chmod a+x /usr/local/bin/lein
 	sudo /usr/local/bin/lein
@@ -15,7 +16,8 @@ if [[ "$answer" != "1" ]]; then
 	pip install argparse
 	pip install numpy
 	pip install tweepy
-else
+
+elif [[ "$answer" == "2" ]]; then
 	sudo yum install python27-devel –y
 	mv /usr/bin/python /usr/bin/python266
 	ln -s /usr/bin/python2.7 /usr/bin/python
@@ -39,6 +41,47 @@ else
 	pip install argparse
 	pip install numpy
 	pip install tweepy	
+else
+	echo "Please choose an AMI. You must enter either 1, or 2"
+	AMI
+fi
+}
+AMI
+
+STR=$'Do you have postgres directories already set up in /data/pgsql? [yes]: '
+echo "$STR"
+read answer
+
+if [[ "$answer" != "yes" ]]; then
+#set up directories for postgres
+mkdir /data/pgsql
+mkdir /data/pgsql/data
+mkdir /data/pgsql/logs
+chown -R postgres /data/pgsql
+sudo -u postgres initdb -D /data/pgsql/data
+
+#setup pg_hba.conf
+sudo -u postgres echo "host    all         all         0.0.0.0         0.0.0.0               md5" >> /data/pgsql/data/pg_hba.conf
+
+#setup postgresql.conf
+sudo -u postgres echo "listen_addresses = '*'" >> /data/pgsql/data/postgresql.conf
+sudo -u postgres echo "standard_conforming_strings = off" >> /data/pgsql/data/postgresql.conf
+
+#make start postgres file
+cat > /data/start_postgres.sh <<EOF
+#! /bin/bash
+sudo -u postgres pg_ctl -D /data/pgsql/data -l /data/pgsql/logs/pgsql.log start
+EOF
+chmod +x /data/start_postgres.sh
+
+#make a stop postgres file
+cat > /data/stop_postgres.sh <<EOF
+#! /bin/bash
+sudo -u postgres pg_ctl -D /data/pgsql/data -l /data/pgsql/logs/pgsql.log stop
+EOF
+chmod +x /data/stop_postgres.sh
+
 fi
 
-
+#start postgres
+/data/start_postgres.sh
