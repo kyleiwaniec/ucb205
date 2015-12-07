@@ -38,21 +38,21 @@ cd ucb205/
 git checkout exercise_2
 ```
 
-__Install dependencies__    
+__1. Install dependencies__    
 You will be prompted to confirm whether or not postgres is set up on /data/pgsql (if you attached a brand new volume, the answer is no)   You will also be prompted to enter your twitter credentials.
 
 
 `. /data/ucb205/exercise_2/install-dependencies.sh`
 
 
-__Start the application__
+__2. Start the stream__
 ```
 cd /data/ucb205/exercise_2/EX2Tweetwordcount/
 sparse quickstart EX2Tweetwordcount
 sparse run
 ```
 
-Open a new shell, source the virtualenv, and run applications:
+__3. Open a new shell, source the virtualenv, and run applications:__
 ```
 source  ~/27env/bin/activate   
 
@@ -62,7 +62,7 @@ python /data/ucb205/exercise_2/plot.py
 
 ```
 
-Use scp to view the generated plot.png bar graph:   
+You can use scp to view the generated plot.png bar graph:   
 `scp -i your_key.pem root@xx.xxx.xx.xx:/data/ucb205/exercise_2/plot.png /path/to/local/dir`
 
 
