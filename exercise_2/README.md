@@ -38,13 +38,11 @@ git checkout exercise_2
 ```
 
 __Install dependencies__    
-You will be prompted to confirm whether or not postgres is set up on /data/pgsql (if you attached a brand new volume, the answer is no)    You will also be prompted to enter your twitter credentials.
+You will be prompted to confirm whether or not postgres is set up on /data/pgsql (if you attached a brand new volume, the answer is no)   You will also be prompted to enter your twitter credentials.
 
 
 `. /data/ucb205/exercise_2/install-dependencies.sh`
 
-__Create the Database and tables__    
-`. /data/ucb205/exercise_2/make-db.sh`
 
 __Start the application__
 ```
