@@ -56,8 +56,8 @@ __3. Open a new shell, source the virtualenv, and run applications:__
 ```
 source  ~/27env/bin/activate   
 
-python /data/ucb205/exercise_2/histogram.py 50 100
-python /data/ucb205/exercise_2/finalresults.py -w mother
+python /data/ucb205/exercise_2/histogram.py [min] [max]
+python /data/ucb205/exercise_2/finalresults.py -w [word]
 python /data/ucb205/exercise_2/plot.py
 
 ```
