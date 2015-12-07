@@ -14,8 +14,11 @@ cur = conn.cursor()
 cur.execute("SELECT word, count FROM Tweetwordcount WHERE count >=%s and count <=%s;" %(args.min, args.max))
 response = cur.fetchall()
 
-for i in response:
-        print i[0]," : ",i[1]
+if response:
+	for i in response:
+	        print i[0]," : ",i[1]
+else:
+	print "there were no words in that range"	        
 
 conn.commit()
 

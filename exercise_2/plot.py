@@ -65,5 +65,8 @@ plt.tick_params(
     right='off')
 
 plt.savefig('plot.png')
+
+print "plot.png was created in your working directory."
+
 plt.show()
 
