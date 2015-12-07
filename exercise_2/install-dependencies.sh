@@ -18,6 +18,11 @@ if [[ "$answer" == "1" ]]; then
 	pip install tweepy
 
 elif [[ "$answer" == "2" ]]; then
+
+	#########################################
+	#   WHAT *NOT* TO DO:
+	#########################################
+	#
 	# sudo yum install python27-devel –y
 	# mv /usr/bin/python /usr/bin/python266
 	# ln -s /usr/bin/python2.7 /usr/bin/python
@@ -34,6 +39,8 @@ elif [[ "$answer" == "2" ]]; then
 	# mv /usr/local/lib/libpython2.7.a /usr/local/lib/tmp_h/
 	# pip install --no-cache-dir matplotlib
 	# mv /usr/local/lib/tmp_h/libpython2.7.a /usr/local/lib/
+	#
+	#########################################
 
 	wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
 	python2.7 ez_setup.py
