@@ -4,11 +4,8 @@
 ##Requirements:
 
 ####AMI   
-The __ucbw205_complete_plus_postgres_virtual2.7__ AMI is recommended. It has the python 2.7 virtual environment already set up and running:      
-`ucbw205_complete_plus_postgres_virtual2.7`   
-`ami-003f7f6a`
-
-But if you insist... you can use the AMI specified in the exercise. __IMPORTANT__: If you use this AMI, see the architecture.pdf for gotchas!
+__ucbw205_complete_plus_postgres_PY2.7__ 
+__IMPORTANT__: If you use this AMI, see the architecture.pdf for gotchas!
 
 ####Volume   
 `m3.large`
@@ -38,11 +35,11 @@ cd /data
 git clone git@github.com:kyleiwaniec/ucb205.git
 cd ucb205/
 git checkout exercise_2
-cd /data/ucb205/exercise_2/
 ```
 
 __Install dependencies__    
-You will be prompted to choose which AMI you are using, to confirm whether or not postgres is set up on /data/pgsql, and to enter your twitter credentials:
+You will be prompted to confirm whether or not postgres is set up on /data/pgsql (if you attached a brand new volume, the answer is no)    You will also be prompted to enter your twitter credentials.
+
 
 `. /data/ucb205/exercise_2/install-dependencies.sh`
 
@@ -58,8 +55,7 @@ sparse run
 
 Open a new shell, source the virtualenv, and run applications:
 ```
-cd /data/ucb205/exercise_2/
-source 27env/bin/activate   
+source  ~/27env/bin/activate   
 
 python /data/ucb205/exercise_2/histogram.py 50 100
 python /data/ucb205/exercise_2/finalresults.py -w mother
