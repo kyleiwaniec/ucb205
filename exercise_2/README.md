@@ -43,13 +43,15 @@ git checkout exercise_2
 cd /data/ucb205/exercise_2/
 ```
 
-Install dependencies. You will be prompted to choose which AMI you are using, and to confirm whether or not postgres is set up on /data:   
+__Install dependencies__    
+You will be prompted to choose which AMI you are using, to confirm whether or not postgres is set up on /data/pgsql, and to enter your twitter credentials:
+
 `. /data/ucb205/exercise_2/install-dependencies.sh`
 
-Create the Database and tables:   
+__Create the Database and tables__    
 `. /data/ucb205/exercise_2/make-db.sh`
 
-Start the application
+__Start the application__
 ```
 cd /data/ucb205/exercise_2/EX2Tweetwordcount/
 sparse quickstart EX2Tweetwordcount
