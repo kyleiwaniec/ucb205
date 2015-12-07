@@ -4,14 +4,15 @@
 ##Requirements:
 
 ####AMI   
-__ucbw205_complete_plus_postgres_PY2.7__ 
-__IMPORTANT__: If you use this AMI, see the architecture.pdf for gotchas!
+__ucbw205_complete_plus_postgres_PY2.7__    
+__IMPORTANT__: python 2.7 will be run in a virtualenv. Lein will also be installed in the appropriate location, namely /usr/local/bin/lein. This is important! Do not use the python 2.7 installation instructions in the exercise, as that method breaks the necessary components to install some dependencies.   
 
 ####Volume   
-`m3.large`
+A brand new `m3.large`   
+(if you are using a pre-exisitng volume and you already have postgres running, you will get the option to skip the postgres setup)
 
 ##Dependencies:   
-(These will be installed by following the Steps below)
+(These will all be installed by following the Steps below)
 ```
 Postgres
 Python 2.7
@@ -29,7 +30,7 @@ tweepy
 
 ###Steps to install dependencies and run application
 
-Once you have mounted /data on your volume:   
+Once you have mounted /data on your volume, and github keys set:   
 ```
 cd /data
 git clone git@github.com:kyleiwaniec/ucb205.git
