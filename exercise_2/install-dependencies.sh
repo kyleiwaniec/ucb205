@@ -41,6 +41,10 @@ elif [[ "$answer" == "2" ]]; then
 	pip2.7 install virtualenv
 	virtualenv -p python2.7 27env
 	source 27env/bin/activate
+
+	wget --directory-prefix=/usr/local/bin/ https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+	chmod a+x /usr/local/bin/lein
+	sudo /usr/local/bin/lein
 	
 	pip install matplotlib
 	pip install streamparse

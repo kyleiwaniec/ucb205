@@ -55,8 +55,9 @@ sparse quickstart EX2Tweetwordcount
 sparse run
 ```
 
-Open a new shell, and run applications:
+Open a new shell, source the virtualenv, and run applications:
 ```
+source 27env/bin/activate
 python /data/ucb205/exercise_2/histogram.py 50 100
 python /data/ucb205/exercise_2/finalresults.py -w mother
 python /data/ucb205/exercise_2/plot.py
