@@ -8,9 +8,7 @@ The __ucbw205_complete_plus_postgres_virtual2.7__ AMI is recommended. It has the
 `ucbw205_complete_plus_postgres_virtual2.7`   
 `ami-003f7f6a`
 
-   
-But if you insist... you can use the AMI specified in the exercise. If you use this AMI, python 2.7 will be configured exactly as per the instructions in the exercise.     
-`ucbw205_complete_plus_postgres_PY2.7`
+But if you insist... you can use the AMI specified in the exercise. __IMPORTANT__: If you use this AMI, see the architecture.pdf for gotchas!
 
 ####Volume   
 `m3.large`

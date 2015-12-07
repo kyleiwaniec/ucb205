@@ -10,10 +10,10 @@ from streamparse.spout import Spout
 ################################################################################
 # Twitter credentials
 ################################################################################
-consumer_key = os.environ.get("consumerKey") #"9L9LLLYE6fc7jsHo1WjVj8I9f",
-consumer_secret = os.environ.get("consumerSecret") #"GDMh9ZxOGbOLOVAqUDLlB3M7R4DWn4QnUFSa8rMmZmc2y3NUfo",
-access_token = os.environ.get("accessToken") #"408180916-lexLejjnitxJ9128aL42twu8pEB1CtSy1dCJtO5V",
-access_token_secret = os.environ.get("accessTokenSecret") #"Ot3laTPsDueEOFnjzj4gEm4wJq0AkQAlQSZMydV9HMgOD"
+consumer_key = os.environ.get("consumerKey")
+consumer_secret = os.environ.get("consumerSecret") 
+access_token = os.environ.get("accessToken")
+access_token_secret = os.environ.get("accessTokenSecret")
 
 twitter_credentials = {
     "consumer_key"        :  consumer_key,
