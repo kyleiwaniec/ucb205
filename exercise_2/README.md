@@ -30,7 +30,7 @@ tweepy
 
 ###Steps to install dependencies and run application
 
-Once you have mounted /data on your volume, and github keys set:   
+Once you have mounted /data on your volume, and set your github keys:   
 ```
 cd /data
 git clone git@github.com:kyleiwaniec/ucb205.git
