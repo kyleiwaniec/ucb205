@@ -40,6 +40,7 @@ cd /data
 git clone git@github.com:kyleiwaniec/ucb205.git
 cd ucb205/
 git checkout exercise_2
+cd /data/ucb205/exercise_2/
 ```
 
 Install dependencies. You will be prompted to choose which AMI you are using, and to confirm whether or not postgres is set up on /data:   
@@ -57,7 +58,9 @@ sparse run
 
 Open a new shell, source the virtualenv, and run applications:
 ```
-source 27env/bin/activate
+cd /data/ucb205/exercise_2/
+source 27env/bin/activate   
+
 python /data/ucb205/exercise_2/histogram.py 50 100
 python /data/ucb205/exercise_2/finalresults.py -w mother
 python /data/ucb205/exercise_2/plot.py

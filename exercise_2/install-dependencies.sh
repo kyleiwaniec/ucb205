@@ -103,3 +103,10 @@ fi
 
 #start postgres
 /data/start_postgres.sh
+
+# set the twitter keys:
+. /data/ucb205/exercise_2/set-twitter-keys.sh
+
+
+
+
