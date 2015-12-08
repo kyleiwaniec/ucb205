@@ -32,24 +32,25 @@ tweepy
 
 __NOTE:__ Run everything as `root` user    
 
-Once you have mounted /data on your volume, and set your github keys:   
+Once you have mounted your volume, and set your github keys:   
 ```
-cd /data
 git clone git@github.com:kyleiwaniec/ucb205.git
-cd ucb205/
+cd ucb205/exercise_2
 git checkout exercise_2
 ```
 
 __1. Install dependencies__    
 You will be prompted to confirm whether or not postgres is set up on /data/pgsql (if you attached a brand new volume, the answer is no)   You will also be prompted to enter your twitter credentials.
 
+This script will also set the HOME dir for the project based on your current working directory. So please run it from ucb205/exercise_2 as instructed above.
 
-`. /data/ucb205/exercise_2/install-dependencies.sh`
+`
+. install-dependencies.sh`
 
 
 __2. Start the stream__
 ```
-cd /data/ucb205/exercise_2/EX2Tweetwordcount/
+cd $EX2_HOME/EX2Tweetwordcount/
 sparse quickstart EX2Tweetwordcount
 sparse run
 ```
@@ -58,14 +59,14 @@ __3. Open a new shell, source the virtualenv, and run applications:__
 ```
 source  ~/27env/bin/activate   
 
-python /data/ucb205/exercise_2/histogram.py [min] [max]
-python /data/ucb205/exercise_2/finalresults.py -w [word]
-python /data/ucb205/exercise_2/plot.py
+python $EX2_HOME/histogram.py [min] [max]
+python $EX2_HOME/finalresults.py -w [word]
+python $EX2_HOME/plot.py
 
 ```
 
 You can use scp to view the generated plot.png bar graph:   
-`scp -i your_key.pem root@xx.xxx.xx.xx:/data/ucb205/exercise_2/plot.png /path/to/local/dir`
+`scp -i ucb.pem root@52.2.158.11:$EX2_HOME/plot.png .`
 
 
 

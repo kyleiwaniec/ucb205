@@ -1,5 +1,8 @@
-#! bin/bash
+#! /bin/bash
 
+# Set the pwd
+
+export EX2_HOME=$(pwd)
 
 #########################################
 #   WHAT *NOT* TO DO:
@@ -82,8 +85,8 @@ fi
 
 
 # set the twitter keys:
-. /data/ucb205/exercise_2/set-twitter-keys.sh
+. $EX2_HOME/set-twitter-keys.sh
 
 # make DB and table
-sudo -u postgres psql -f /data/ucb205/exercise_2/twitter.sql
+sudo -u postgres psql -f $EX2_HOME/twitter.sql
 
