@@ -30,6 +30,8 @@ tweepy
 
 ###Steps to install dependencies and run application
 
+__NOTE:__ Run everything as `root` user    
+
 Once you have mounted /data on your volume, and set your github keys:   
 ```
 cd /data
