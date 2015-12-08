@@ -2,7 +2,8 @@
 
 # Set the pwd
 
-export EX2_HOME=$(pwd)
+echo "export EX2HOME=$(pwd)" >> ~/.bash_profile
+source ~/.bash_profile
 
 #########################################
 #   WHAT *NOT* TO DO:
