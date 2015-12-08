@@ -66,7 +66,7 @@ python $EX2_HOME/plot.py
 ```
 
 You can use scp to view the generated plot.png bar graph:   
-`scp -i ucb.pem root@52.2.158.11:$EX2_HOME/plot.png .`
+`scp -i ucb.pem root@52.2.158.11:/data/ucb205/exercise_2/plot.png .`
 
 
 
