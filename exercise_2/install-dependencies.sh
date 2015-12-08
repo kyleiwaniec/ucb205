@@ -2,7 +2,7 @@
 
 # Set the pwd
 
-echo "export EX2HOME=$(pwd)" >> ~/.bash_profile
+echo "export EX2_HOME=$(pwd)" >> ~/.bash_profile
 source ~/.bash_profile
 
 #########################################
@@ -80,10 +80,10 @@ sudo -u postgres pg_ctl -D /data/pgsql/data -l /data/pgsql/logs/pgsql.log stop
 EOF
 chmod +x /data/stop_postgres.sh
 
-#start postgres
-/data/start_postgres.sh
 fi
 
+#start postgres (if it's already started it might puke up on you, but that's OK)
+/data/start_postgres.sh
 
 # set the twitter keys:
 . $EX2_HOME/set-twitter-keys.sh
