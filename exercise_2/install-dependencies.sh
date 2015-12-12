@@ -37,6 +37,7 @@ source  ~/27env/bin/activate
 
 wget --directory-prefix=/usr/local/bin/ https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 chmod a+x /usr/local/bin/lein
+export LEIN_ROOT=yes
 sudo /usr/local/bin/lein
 
 pip install matplotlib
@@ -93,4 +94,5 @@ fi
 
 # make DB and table
 sudo -u postgres psql -f $EX2_HOME/twitter.sql
+
 
