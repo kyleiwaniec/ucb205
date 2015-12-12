@@ -79,11 +79,14 @@ cat > /data/stop_postgres.sh <<EOF
 sudo -u postgres pg_ctl -D /data/pgsql/data -l /data/pgsql/logs/pgsql.log stop
 EOF
 chmod +x /data/stop_postgres.sh
-
+#start postgres
+/data/start_postgres.sh
+else
+echo "make sure your postgres is running, then press enter to continue"
+read _
 fi
 
-#start postgres (if it's already started it might puke up on you, but that's OK)
-/data/start_postgres.sh
+
 
 # set the twitter keys:
 . $EX2_HOME/set-twitter-keys.sh
