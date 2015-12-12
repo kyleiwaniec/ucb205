@@ -32,6 +32,16 @@ tweepy
 
 __NOTE:__ Run everything as `root` user    
 
+Make a new file system and mount your volume:
+
+```
+fdisk -l
+mkfs.ext4 <disk>
+mount -t ext4 <disk> /data
+chmod a+rwx /data
+```
+
+
 Once you have mounted your volume, and set your github keys:   
 ```
 git clone git@github.com:kyleiwaniec/ucb205.git
