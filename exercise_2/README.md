@@ -1,7 +1,9 @@
 #Exercise 2#
 
 
-##Requirements:
+##Requirements:   
+(For best results use the recommended AMI and a brand new volume)
+
 
 ####AMI   
 __ucbw205_complete_plus_postgres_PY2.7__    
@@ -36,8 +38,8 @@ Make a new file system and mount your volume:
 
 ```
 fdisk -l
-mkfs.ext4 <disk>
-mount -t ext4 <disk> /data
+mkfs.ext4 [disk]
+mount -t ext4 [disk] /data
 chmod a+rwx /data
 ```
 
