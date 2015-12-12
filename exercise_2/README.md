@@ -32,11 +32,23 @@ tweepy
 
 __NOTE:__ Run everything as `root` user    
 
+Make a new file system and mount your volume:
+
+```
+fdisk -l
+mkfs.ext4 <disk>
+mount -t ext4 <disk> /data
+chmod a+rwx /data
+```
+
+
 Once you have mounted your volume, and set your github keys:   
 ```
+cd /data
 git clone git@github.com:kyleiwaniec/ucb205.git
-cd ucb205/exercise_2
+cd ucb205
 git checkout exercise_2
+cd exercise_2
 ```
 
 __1. Install dependencies__    
