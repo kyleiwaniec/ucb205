@@ -8,7 +8,7 @@
 # add twitter keys to environment:
 
 function consumerKey {
-	STR=$'Please enter your consumerKey: '
+	STR=$'Please enter your Twitter consumerKey: '
 	echo "$STR"
 	read answer
 
@@ -21,7 +21,7 @@ function consumerKey {
 	fi
 }
 function consumerSecret {
-	STR=$'Please enter your consumerSecret: '
+	STR=$'Please enter your Twitter consumerSecret: '
 	echo "$STR"
 	read answer
 
@@ -34,7 +34,7 @@ function consumerSecret {
 	fi
 }
 function accessToken {
-	STR=$'Please enter your accessToken: '
+	STR=$'Please enter your Twitter accessToken: '
 	echo "$STR"
 	read answer
 
@@ -47,7 +47,7 @@ function accessToken {
 	fi
 }
 function accessTokenSecret {
-	STR=$'Please enter your accessTokenSecret: '
+	STR=$'Please enter your Twitter accessTokenSecret: '
 	echo "$STR"
 	read answer
 

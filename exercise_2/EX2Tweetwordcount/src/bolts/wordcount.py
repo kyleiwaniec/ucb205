@@ -27,7 +27,7 @@ class WordCounter(Bolt):
         self.counts[word] += 1
 
 
-        self.cur.execute("UPDATE Tweetwordcount SET count=count+1 WHERE word=%s", (self.counts[word], word))
+        self.cur.execute("UPDATE Tweetwordcount SET count=count+1 WHERE word=%(word)s", {'word': word})
         self.conn.commit()
 
         self.cur.execute("INSERT INTO Tweetwordcount (count, word) \
