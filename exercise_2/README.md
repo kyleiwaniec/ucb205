@@ -44,6 +44,7 @@ chmod a+rwx /data
 
 Once you have mounted your volume, and set your github keys:   
 ```
+cd /data
 git clone git@github.com:kyleiwaniec/ucb205.git
 cd ucb205/exercise_2
 git checkout exercise_2
