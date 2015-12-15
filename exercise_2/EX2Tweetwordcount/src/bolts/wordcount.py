@@ -18,7 +18,7 @@ class WordCounter(Bolt):
 
         # Write codes to increment the word count in Postgres
         # Use psycopg to interact with Postgres
-        # Database name: Tcount 
+        # Database name: tcount 
         # Table name: Tweetwordcount 
         # you need to create both the database and the table in advance.
 
