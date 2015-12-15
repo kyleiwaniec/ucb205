@@ -3,9 +3,10 @@
 
 ####This branch contains *absolute minimum* effort to run exercise 1 successfully. It is not intended as an improvement on existing code.###
 
-__Where it all went horribly wrong:__   
+__Where it all went horribly wrong:__    
+
 1. No instructions provided to run code   
-2. Results listed in the accompanying txt file were out of date   
+2. Results listed in the accompanying txt files were out of date   
 3. Advice to self: SLOW THE F* DOWN.   
 
 
