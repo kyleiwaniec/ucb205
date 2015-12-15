@@ -24,7 +24,7 @@ Top ten hospitals using average of zscores
 
 
 
-//// after running it a second time weeks later //////
+//// CORRECTED RESULTS //////
 
 
 +-----------+------------------+-----------+--------------------+-----+

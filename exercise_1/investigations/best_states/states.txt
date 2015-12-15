@@ -18,8 +18,8 @@ Top ten states using average of zscores:
 
 
 
-//// after running it a second time weeks later //////
 
+//// CORRECTED RESULTS //////
 
 +-----+--------------------+
 |state|          avg_zscore|

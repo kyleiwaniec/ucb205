@@ -34,7 +34,7 @@ Highest hospital variability as between procedures 370170 == USPHS LAWTON INDIAN
 
 
 
-//// after running it a second time weeks later //////
+//// CORRECTED RESULTS //////
 
 +--------------------+------------------+------------------+
 |        measure_name|        measure_id|          variance|
@@ -43,8 +43,8 @@ Highest hospital variability as between procedures 370170 == USPHS LAWTON INDIAN
 |Heart failure (HF...|        MORT_30_HF| 1.000000000000011|
 |Rate of readmissi...| READM_30_HIP_KNEE|1.0000000000000084|
 |Ischemic stroke p...|             STK_2| 1.000000000000008|
-|Heart failure pat...|              HF_3|1.0000000000000073|
 |Heart failure pat...|              HF_1|1.0000000000000073|
+|Heart failure pat...|              HF_3|1.0000000000000073|
 |Pneumonia (PN) 30...|        MORT_30_PN|1.0000000000000056|
 |Patients with blo...|             VTE_5|1.0000000000000047|
 |Rate of readmissi...|READM_30_HOSP_WIDE|1.0000000000000044|

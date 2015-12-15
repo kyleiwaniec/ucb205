@@ -6,7 +6,10 @@ correlation of variance in procedure scores w/ survey_scores: 0.0125356246453944
 There appears to be little corelation as between hospital scores and survey responses. However, this analysis does not include enough data to be a reliable measure.
 
 
-//// after running it a second time weeks later //////
+//// CORRECTED RESULTS //////
 
-0.12671975135367136
-0.018770189740278335
+correlation of average zscores w/ survey_score: 
+0.12671975135367139
+
+correlation of variance in procedure scores w/ survey_scores: 
+0.018770189740278397
