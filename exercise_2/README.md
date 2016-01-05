@@ -45,6 +45,7 @@ chmod a+rwx /data
 
 
 Once you have mounted your volume, and set your github keys:   
+*(If you have your keys saved somewhere you can use the git-keys-template.sh to speed up this process. This is optional.)*     
 ```
 cd /data
 git clone git@github.com:kyleiwaniec/ucb205.git
