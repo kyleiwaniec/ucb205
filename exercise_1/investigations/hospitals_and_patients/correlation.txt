@@ -1,0 +1,15 @@
+To measure correlations, the last two columns of the .. table were added. According to the documentation, this sum accounts for the overall survey score. 
+
+correlation of average zscores w/ survey_score: 0.057855673513922908
+correlation of variance in procedure scores w/ survey_scores: 0.012535624645394433
+
+There appears to be little corelation as between hospital scores and survey responses. However, this analysis does not include enough data to be a reliable measure.
+
+
+//// CORRECTED RESULTS //////
+
+correlation of average zscores w/ survey_score: 
+0.12671975135367139
+
+correlation of variance in procedure scores w/ survey_scores: 
+0.018770189740278397
