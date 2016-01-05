@@ -1,4 +1,2 @@
-#READMEs are in their respective branches
-https://github.com/kyleiwaniec/ucb205/tree/exercise_2/exercise_2 
-
-https://github.com/kyleiwaniec/ucb205/tree/exercise_1/exercise_1
+##Data Storage and Retrieval - Fall 2015
+Exercises
